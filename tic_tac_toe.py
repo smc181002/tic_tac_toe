@@ -3,7 +3,6 @@ mylist = [' ']*9
 
 #functions
 def game_board():
-
     print(' ')    
     print(f' {mylist[6]} | {mylist[7]} | {mylist[8]}')
     print(f'-----------')
@@ -104,6 +103,14 @@ def input_p2():
                 game_board()
                 break
             
+def check_win():
+    if mylist[0] == mylist[1] == mylist[2] != ' ' or mylist[3] == mylist[4] == mylist[5] != ' ' or mylist[6] == mylist[7] == mylist[8] != ' ' or mylist[0] == mylist[4] == mylist[8] != ' ' or mylist[6] == mylist[4] == mylist[2] != ' ' or mylist[6] == mylist[3] == mylist[0] != ' ' or mylist[7] == mylist[4] == mylist[1] != ' ' or mylist[8] == mylist[5] == mylist[2] != ' ': 
+#         print(f"the player {x} wins") 
+        return 'wins'
+    elif ' ' not in mylist:
+        return 'draws'
+    
+
 #Start of the game
 print("Welcome to play the game TicTacToe get to continue ")
 
@@ -116,13 +123,13 @@ while True:
         x  = 'Player1'
         o = 'Player2'
         print('So player one is assigned "X" and player two is assigned "O"')
-        print(x, o)
+        # print(x, o)
         break
     elif player_choice == 'O':
         x = 'Player2'
         o = 'Player1'
         print('So player one is assigned "O" and player two is assigned "X"')
-        print(x, o)
+        # print(x, o)
         break
     else:
         print('I think you are supposed to enter either "X" or "O" \nTry again')
@@ -136,21 +143,21 @@ while True:
     print(' please enter a number between 0-9 as seen in the numberpad')
     
     input_p1()
-    
-    if mylist[0] == mylist[1] == mylist[2] != ' ' or mylist[3] == mylist[4] == mylist[5] != ' ' or mylist[6] == mylist[7] == mylist[8] != ' ' or mylist[0] == mylist[4] == mylist[8] != ' ' or mylist[6] == mylist[4] == mylist[2] != ' ' or mylist[6] == mylist[3] == mylist[0] != ' ' or mylist[7] == mylist[4] == mylist[1] != ' ' or mylist[8] == mylist[5] == mylist[2] != ' ': 
-        print(f"the player {x} wins")
+
+    if check_win() == 'wins':
+        print(f"the player 1 wins")
         break
     
-    elif ' ' not in mylist:
+    elif check_win() == 'draws':
         print('well its a tie')
         break
     
     input_p2()
 
-    if mylist[0] == mylist[1] == mylist[2] != ' ' or mylist[3] == mylist[4] == mylist[5] != ' ' or mylist[6] == mylist[7] == mylist[8] != ' ' or mylist[0] == mylist[4] == mylist[8] != ' ' or mylist[6] == mylist[4] == mylist[2] != ' ' or mylist[6] == mylist[3] == mylist[0] != ' ' or mylist[7] == mylist[4] == mylist[1] != ' ' or mylist[8] == mylist[5] == mylist[2] != ' ': 
-        print(f"the player {o} wins")
+    if check_win() == 'wins':
+        print(f"the player 2 wins")
         break
     
-    elif ' ' not in mylist:
+    elif check_win() == 'draws':
         print('well its a tie')
         break
